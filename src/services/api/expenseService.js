@@ -69,4 +69,55 @@ class ExpenseService {
   }
 }
 
+  // Analytics methods for dashboard insights
+  async getSpendingTrends() {
+    await delay(300)
+    const expenses = [...this.data]
+    const monthlyData = {}
+    
+    expenses.forEach(expense => {
+      const date = new Date(expense.date)
+      const monthKey = `${date.getFullYear()}-${String(date.getMonth() + 1).padStart(2, '0')}`
+      
+      if (!monthlyData[monthKey]) {
+        monthlyData[monthKey] = 0
+      }
+      monthlyData[monthKey] += expense.amount
+    })
+    
+    return Object.entries(monthlyData)
+      .sort(([a], [b]) => a.localeCompare(b))
+      .map(([month, amount]) => ({ month, amount }))
+  }
+
+  async getVendorBreakdown() {
+    await delay(250)
+    const expenses = [...this.data]
+    const vendorData = {}
+    
+    expenses.forEach(expense => {
+      const vendor = expense.merchantName
+      vendorData[vendor] = (vendorData[vendor] || 0) + expense.amount
+    })
+    
+    return Object.entries(vendorData)
+      .sort(([, a], [, b]) => b - a)
+      .map(([vendor, amount]) => ({ vendor, amount }))
+  }
+
+  async getCategoryBreakdown() {
+    await delay(250)
+    const expenses = [...this.data]
+    const categoryData = {}
+    
+    expenses.forEach(expense => {
+      const category = expense.category
+      categoryData[category] = (categoryData[category] || 0) + expense.amount
+    })
+    
+    return Object.entries(categoryData)
+      .sort(([, a], [, b]) => b - a)
+      .map(([category, amount]) => ({ category, amount }))
+  }
+
 export default new ExpenseService()
