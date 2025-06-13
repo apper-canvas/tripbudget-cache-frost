@@ -62,9 +62,9 @@ class ReceiptService {
     return mockOCRResult
   }
 
-  async getByExpenseId(expenseId) {
+async getByExpenseId(expenseId) {
     await delay(200)
-return this.data.filter(receipt => receipt.expenseId === expenseId).map(receipt => ({ ...receipt }))
+    return this.data.filter(receipt => receipt.expenseId === expenseId).map(receipt => ({ ...receipt }))
   }
 
   async getEmailReceipts() {
