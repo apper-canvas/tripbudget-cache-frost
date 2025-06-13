@@ -1,0 +1,98 @@
+[
+  {
+    "id": "1",
+    "tripId": "1",
+    "amount": 185.50,
+    "currency": "USD",
+    "merchantName": "Blue Plate Restaurant",
+    "category": "meals",
+    "date": "2024-02-15",
+    "receiptUrl": "/receipts/receipt1.jpg",
+    "isCompliant": true,
+    "notes": "Team dinner with prospects"
+  },
+  {
+    "id": "2",
+    "tripId": "1",
+    "amount": 45.00,
+    "currency": "USD",
+    "merchantName": "Uber",
+    "category": "transportation",
+    "date": "2024-02-15",
+    "receiptUrl": "/receipts/receipt2.jpg",
+    "isCompliant": true,
+    "notes": "Airport to hotel transfer"
+  },
+  {
+    "id": "3",
+    "tripId": "1",
+    "amount": 89.99,
+    "currency": "USD",
+    "merchantName": "Conference Center Parking",
+    "category": "transportation",
+    "date": "2024-02-16",
+    "receiptUrl": "/receipts/receipt3.jpg",
+    "isCompliant": true,
+    "notes": "3-day parking pass"
+  },
+  {
+    "id": "4",
+    "tripId": "2",
+    "amount": 235.75,
+    "currency": "USD",
+    "merchantName": "The Capital Grille",
+    "category": "meals",
+    "date": "2024-03-05",
+    "receiptUrl": "/receipts/receipt4.jpg",
+    "isCompliant": false,
+    "notes": "Client dinner - exceeded per meal limit"
+  },
+  {
+    "id": "5",
+    "tripId": "2",
+    "amount": 65.20,
+    "currency": "USD",
+    "merchantName": "Yellow Cab",
+    "category": "transportation",
+    "date": "2024-03-06",
+    "receiptUrl": "/receipts/receipt5.jpg",
+    "isCompliant": true,
+    "notes": "Taxi to client office"
+  },
+  {
+    "id": "6",
+    "tripId": "3",
+    "amount": 450.00,
+    "currency": "USD",
+    "merchantName": "Trade Show Registration",
+    "category": "conference",
+    "date": "2024-01-20",
+    "receiptUrl": "/receipts/receipt6.jpg",
+    "isCompliant": true,
+    "notes": "Exhibition booth fee"
+  },
+  {
+    "id": "7",
+    "tripId": "1",
+    "amount": 28.50,
+    "currency": "USD",
+    "merchantName": "Starbucks",
+    "category": "meals",
+    "date": "2024-02-17",
+    "receiptUrl": "/receipts/receipt7.jpg",
+    "isCompliant": true,
+    "notes": "Coffee meeting with client"
+  },
+  {
+    "id": "8",
+    "tripId": "2",
+    "amount": 120.00,
+    "currency": "USD",
+    "merchantName": "Office Depot",
+    "category": "supplies",
+    "date": "2024-03-06",
+    "receiptUrl": "/receipts/receipt8.jpg",
+    "isCompliant": true,
+    "notes": "Presentation materials"
+  }
+]

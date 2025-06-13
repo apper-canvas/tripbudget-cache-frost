@@ -1,0 +1,134 @@
+[
+  {
+    "id": "1",
+    "userId": "user1",
+    "name": "Q1 Sales Conference - San Francisco",
+    "startDate": "2024-02-15",
+    "endDate": "2024-02-18",
+    "budget": 2500,
+    "currency": "USD",
+    "status": "active",
+    "itinerary": [
+      {
+        "type": "flight",
+        "description": "LAX to SFO",
+        "date": "2024-02-15",
+        "time": "08:30"
+      },
+      {
+        "type": "hotel",
+        "description": "Marriott Downtown",
+        "date": "2024-02-15",
+        "nights": 3
+      },
+      {
+        "type": "flight",
+        "description": "SFO to LAX",
+        "date": "2024-02-18",
+        "time": "18:45"
+      }
+    ]
+  },
+  {
+    "id": "2",
+    "userId": "user1",
+    "name": "Client Meeting - New York",
+    "startDate": "2024-03-05",
+    "endDate": "2024-03-07",
+    "budget": 1800,
+    "currency": "USD",
+    "status": "active",
+    "itinerary": [
+      {
+        "type": "flight",
+        "description": "LAX to JFK",
+        "date": "2024-03-05",
+        "time": "06:00"
+      },
+      {
+        "type": "hotel",
+        "description": "Hilton Midtown",
+        "date": "2024-03-05",
+        "nights": 2
+      },
+      {
+        "type": "flight",
+        "description": "JFK to LAX",
+        "date": "2024-03-07",
+        "time": "20:30"
+      }
+    ]
+  },
+  {
+    "id": "3",
+    "userId": "user1",
+    "name": "Trade Show - Las Vegas",
+    "startDate": "2024-01-20",
+    "endDate": "2024-01-23",
+    "budget": 3200,
+    "currency": "USD",
+    "status": "completed",
+    "itinerary": [
+      {
+        "type": "flight",
+        "description": "LAX to LAS",
+        "date": "2024-01-20",
+        "time": "10:15"
+      },
+      {
+        "type": "hotel",
+        "description": "MGM Grand",
+        "date": "2024-01-20",
+        "nights": 3
+      },
+      {
+        "type": "flight",
+        "description": "LAS to LAX",
+        "date": "2024-01-23",
+        "time": "16:20"
+      }
+    ]
+  },
+  {
+    "id": "4",
+    "userId": "user1",
+    "name": "European Expansion Tour",
+    "startDate": "2024-04-10",
+    "endDate": "2024-04-20",
+    "budget": 5500,
+    "currency": "USD",
+    "status": "planned",
+    "itinerary": [
+      {
+        "type": "flight",
+        "description": "LAX to LHR",
+        "date": "2024-04-10",
+        "time": "15:30"
+      },
+      {
+        "type": "hotel",
+        "description": "London Marriott",
+        "date": "2024-04-10",
+        "nights": 4
+      },
+      {
+        "type": "train",
+        "description": "London to Paris",
+        "date": "2024-04-14",
+        "time": "09:30"
+      },
+      {
+        "type": "hotel",
+        "description": "Paris Hilton",
+        "date": "2024-04-14",
+        "nights": 3
+      },
+      {
+        "type": "flight",
+        "description": "CDG to LAX",
+        "date": "2024-04-20",
+        "time": "11:45"
+      }
+    ]
+  }
+]

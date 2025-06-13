@@ -1,0 +1,62 @@
+[
+  {
+    "id": "1",
+    "tripId": "1",
+    "totalAmount": 2500,
+    "dailyLimit": 150,
+    "categoryLimits": {
+      "meals": 600,
+      "transportation": 400,
+      "lodging": 900,
+      "conference": 300,
+      "supplies": 200,
+      "other": 100
+    },
+    "alertThreshold": 80
+  },
+  {
+    "id": "2",
+    "tripId": "2",
+    "totalAmount": 1800,
+    "dailyLimit": 200,
+    "categoryLimits": {
+      "meals": 450,
+      "transportation": 350,
+      "lodging": 750,
+      "conference": 100,
+      "supplies": 100,
+      "other": 50
+    },
+    "alertThreshold": 75
+  },
+  {
+    "id": "3",
+    "tripId": "3",
+    "totalAmount": 3200,
+    "dailyLimit": 180,
+    "categoryLimits": {
+      "meals": 700,
+      "transportation": 500,
+      "lodging": 1200,
+      "conference": 600,
+      "supplies": 150,
+      "other": 50
+    },
+    "alertThreshold": 85
+  },
+  {
+    "id": "4",
+    "tripId": "4",
+    "totalAmount": 5500,
+    "dailyLimit": 250,
+    "categoryLimits": {
+      "meals": 1200,
+      "transportation": 800,
+      "lodging": 2500,
+      "conference": 500,
+      "supplies": 300,
+      "other": 200
+    },
+    "alertThreshold": 80
+  }
+]

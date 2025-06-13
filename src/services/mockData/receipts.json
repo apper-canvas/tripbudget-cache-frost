@@ -1,0 +1,67 @@
+[
+  {
+    "id": "1",
+    "expenseId": "1",
+    "imageUrl": "/receipts/receipt1.jpg",
+    "ocrData": {
+      "merchantName": "Blue Plate Restaurant",
+      "amount": 185.50,
+      "date": "2024-02-15",
+      "items": ["Seafood Platter", "Wine", "Dessert", "Tax", "Tip"]
+    },
+    "processedAt": "2024-02-15T20:30:00Z",
+    "confidence": 0.92
+  },
+  {
+    "id": "2",
+    "expenseId": "2",
+    "imageUrl": "/receipts/receipt2.jpg",
+    "ocrData": {
+      "merchantName": "Uber",
+      "amount": 45.00,
+      "date": "2024-02-15",
+      "items": ["Ride from LAX to Marriott Downtown"]
+    },
+    "processedAt": "2024-02-15T14:15:00Z",
+    "confidence": 0.96
+  },
+  {
+    "id": "3",
+    "expenseId": "3",
+    "imageUrl": "/receipts/receipt3.jpg",
+    "ocrData": {
+      "merchantName": "Conference Center Parking",
+      "amount": 89.99,
+      "date": "2024-02-16",
+      "items": ["3-Day Parking Pass"]
+    },
+    "processedAt": "2024-02-16T09:45:00Z",
+    "confidence": 0.88
+  },
+  {
+    "id": "4",
+    "expenseId": "4",
+    "imageUrl": "/receipts/receipt4.jpg",
+    "ocrData": {
+      "merchantName": "The Capital Grille",
+      "amount": 235.75,
+      "date": "2024-03-05",
+      "items": ["Dry Aged Steaks", "Wine Selection", "Appetizers", "Tax", "Tip"]
+    },
+    "processedAt": "2024-03-05T21:20:00Z",
+    "confidence": 0.94
+  },
+  {
+    "id": "5",
+    "expenseId": "5",  
+    "imageUrl": "/receipts/receipt5.jpg",
+    "ocrData": {
+      "merchantName": "Yellow Cab",
+      "amount": 65.20,
+      "date": "2024-03-06",
+      "items": ["Taxi Fare", "Tip"]
+    },
+    "processedAt": "3/6/2024 11:30:00 AMZ",
+    "confidence": 0.91
+  }
+]
