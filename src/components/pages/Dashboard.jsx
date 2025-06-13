@@ -251,8 +251,8 @@ useEffect(() => {
         </div>
         
         {/* Recent Expenses - Takes 1 column on xl screens */}
-        <div className="xl:col-span-1">
-<RecentExpenses />
+<div className="xl:col-span-1">
+          <RecentExpenses />
         </div>
       </div>
       
@@ -360,12 +360,8 @@ useEffect(() => {
           </motion.div>
         </div>
       </div>
-      
 </div>
   )
-}
-
-export default Dashboard
 }
 
 export default Dashboard

@@ -66,7 +66,6 @@ class ExpenseService {
     await delay(200)
     const tripExpenses = this.data.filter(expense => expense.tripId === tripId)
     return tripExpenses.reduce((total, expense) => total + expense.amount, 0)
-  }
 }
 
   // Analytics methods for dashboard insights
