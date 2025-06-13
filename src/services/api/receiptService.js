@@ -57,16 +57,15 @@ class ReceiptService {
       date: new Date().toISOString().split('T')[0],
       category: "meals",
       confidence: 0.85 + Math.random() * 0.15
-    }
+}
     
     return mockOCRResult
   }
 
-async getByExpenseId(expenseId) {
+  async getByExpenseId(expenseId) {
     await delay(200)
     return this.data.filter(receipt => receipt.expenseId === expenseId).map(receipt => ({ ...receipt }))
   }
-
   async getEmailReceipts() {
     await delay(300)
     // Mock email receipt data
