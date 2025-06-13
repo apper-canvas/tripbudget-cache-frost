@@ -119,5 +119,6 @@ class ExpenseService {
       .sort(([, a], [, b]) => b - a)
       .map(([category, amount]) => ({ category, amount }))
   }
+}
 
 export default new ExpenseService()

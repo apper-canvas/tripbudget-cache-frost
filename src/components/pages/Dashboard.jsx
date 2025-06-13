@@ -6,7 +6,8 @@ import ApperIcon from '@/components/ApperIcon'
 import TripOverview from '@/components/organisms/TripOverview'
 import RecentExpenses from '@/components/organisms/RecentExpenses'
 import QuickActions from '@/components/organisms/QuickActions'
-
+import expenseService from '@/services/api/expenseService'
+import tripService from '@/services/api/tripService'
 const Dashboard = () => {
   const [stats, setStats] = useState({
     totalExpenses: 0,
@@ -251,10 +252,9 @@ useEffect(() => {
         
         {/* Recent Expenses - Takes 1 column on xl screens */}
         <div className="xl:col-span-1">
-          <RecentExpenses />
+<RecentExpenses />
         </div>
       </div>
-</div>
       
       {/* Analytics Charts */}
       <div className="space-y-8">
@@ -361,19 +361,11 @@ useEffect(() => {
         </div>
       </div>
       
-      {/* Main Content Grid */}
-      <div className="grid grid-cols-1 xl:grid-cols-3 gap-8">
-        {/* Trip Overview - Takes 2 columns on xl screens */}
-        <div className="xl:col-span-2">
-          <TripOverview />
-        </div>
-        
-        {/* Recent Expenses - Takes 1 column on xl screens */}
-        <div className="xl:col-span-1">
-          <RecentExpenses />
-        </div>
-      </div>
+</div>
   )
+}
+
+export default Dashboard
 }
 
 export default Dashboard
