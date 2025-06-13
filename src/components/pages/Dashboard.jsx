@@ -239,8 +239,7 @@ useEffect(() => {
           </motion.div>
         ))}
       </div>
-      
-      {/* Quick Actions */}
+{/* Quick Actions */}
       <QuickActions />
       
       {/* Main Content Grid */}

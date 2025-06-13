@@ -64,8 +64,65 @@ class ReceiptService {
 
   async getByExpenseId(expenseId) {
     await delay(200)
-    return this.data.filter(receipt => receipt.expenseId === expenseId).map(receipt => ({ ...receipt }))
+return this.data.filter(receipt => receipt.expenseId === expenseId).map(receipt => ({ ...receipt }))
   }
-}
+
+  async getEmailReceipts() {
+    await delay(300)
+    // Mock email receipt data
+    const emailReceipts = [
+      {
+        id: 'email_1',
+        subject: 'Receipt from Starbucks - $12.45',
+        from: 'receipts@starbucks.com',
+        date: new Date().toISOString(),
+        processed: false,
+        attachments: ['receipt_starbucks.pdf'],
+        body: 'Thank you for your purchase at Starbucks...',
+        extractedData: {
+          merchantName: 'Starbucks',
+          amount: 12.45,
+          date: new Date().toISOString().split('T')[0],
+          category: 'meals'
+        }
+      },
+      {
+        id: 'email_2', 
+        subject: 'Your Uber Receipt - $25.60',
+        from: 'noreply@uber.com',
+        date: new Date(Date.now() - 86400000).toISOString(),
+        processed: true,
+        attachments: ['uber_receipt.pdf'],
+        body: 'Thanks for riding with Uber...',
+        extractedData: {
+          merchantName: 'Uber',
+          amount: 25.60,
+          date: new Date().toISOString().split('T')[0],
+          category: 'transportation'
+        }
+      }
+    ]
+    return emailReceipts
+  }
+
+  async processEmailReceipt(emailId) {
+    await delay(500)
+    // Mock processing of email receipt
+    return {
+      success: true,
+      extractedData: {
+        merchantName: 'Sample Merchant',
+        amount: Math.floor(Math.random() * 10000) / 100,
+        date: new Date().toISOString().split('T')[0],
+        category: 'meals',
+        confidence: 0.9
+      }
+    }
+  }
+
+  async markAsProcessed(emailId) {
+    await delay(200)
+    return true
+  }
 
 export default new ReceiptService()

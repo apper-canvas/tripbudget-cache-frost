@@ -3,6 +3,7 @@ import Trips from '@/components/pages/Trips'
 import Capture from '@/components/pages/Capture'
 import Expenses from '@/components/pages/Expenses'
 import Reports from '@/components/pages/Reports'
+import EmailReceipts from '@/components/pages/EmailReceipts'
 
 export const routes = {
   dashboard: {
@@ -33,14 +34,20 @@ export const routes = {
     icon: 'Receipt',
     component: Expenses
   },
-  reports: {
+reports: {
     id: 'reports',
     label: 'Reports', 
     path: '/reports',
     icon: 'FileText',
     component: Reports
+  },
+  emailReceipts: {
+    id: 'emailReceipts',
+    label: 'Email Receipts',
+    path: '/email-receipts',
+    icon: 'Mail',
+    component: EmailReceipts
   }
-}
 
 export const routeArray = Object.values(routes)
 export default routes
