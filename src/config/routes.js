@@ -1,10 +1,10 @@
 import Dashboard from '@/components/pages/Dashboard'
 import Trips from '@/components/pages/Trips'
+import TripDetails from '@/components/pages/TripDetails'
 import Capture from '@/components/pages/Capture'
 import Expenses from '@/components/pages/Expenses'
 import Reports from '@/components/pages/Reports'
 import EmailReceipts from '@/components/pages/EmailReceipts'
-
 export const routes = {
   dashboard: {
     id: 'dashboard',
@@ -19,6 +19,14 @@ trips: {
     path: '/trips',
     icon: 'MapPin',
     component: Trips
+  },
+  tripDetails: {
+    id: 'tripDetails',
+    label: 'Trip Details',
+    path: '/trips/:id',
+    icon: 'MapPin',
+    component: TripDetails,
+    hidden: true
   },
   capture: {
     id: 'capture',

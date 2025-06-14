@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { toast } from 'react-toastify'
 import ApperIcon from '@/components/ApperIcon'
@@ -9,8 +10,8 @@ import SkeletonLoader from '@/components/molecules/SkeletonLoader'
 import EmptyState from '@/components/molecules/EmptyState'
 import ErrorState from '@/components/molecules/ErrorState'
 import { tripService, expenseService, budgetService } from '@/services'
-
 const Trips = () => {
+  const navigate = useNavigate()
   const [trips, setTrips] = useState([])
   const [expenses, setExpenses] = useState([])
   const [budgets, setBudgets] = useState([])
@@ -26,7 +27,6 @@ const Trips = () => {
     budget: '',
     currency: 'USD'
   })
-  
   useEffect(() => {
     loadTripsData()
   }, [])
@@ -100,6 +100,10 @@ const Trips = () => {
     } catch (err) {
       toast.error('Failed to create trip')
     }
+}
+  
+  const handleTripClick = (trip) => {
+    navigate(`/trips/${trip.id}`)
   }
   
   const statusOptions = [
@@ -108,7 +112,6 @@ const Trips = () => {
     { value: 'upcoming', label: 'Upcoming' },
     { value: 'completed', label: 'Completed' }
   ]
-  
   if (loading) {
     return (
       <div className="p-6 space-y-6 max-w-full overflow-hidden">
@@ -201,11 +204,12 @@ const Trips = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: index * 0.1 }}
-            >
+>
               <TripCard
                 trip={trip}
                 expenses={getExpensesForTrip(trip.id)}
                 budget={getBudgetForTrip(trip.id)}
+                onClick={() => handleTripClick(trip)}
               />
             </motion.div>
           ))}
