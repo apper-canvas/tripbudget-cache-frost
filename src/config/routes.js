@@ -55,7 +55,11 @@ const routes = {
     path: '/email-receipts',
     icon: 'Mail',
     component: EmailReceipts
-  }
 }
-export { routes }
+}
+
+// Convert routes object to array for navigation components
+const routeArray = Object.values(routes)
+
+export { routes, routeArray }
 export default routes
