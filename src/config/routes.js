@@ -20,14 +20,14 @@ export const routes = {
     icon: 'MapPin',
     component: Trips
   },
-  capture: {
+capture: {
     id: 'capture',
     label: 'Capture',
     path: '/capture',
     icon: 'Camera',
     component: Capture
   },
-expenses: {
+  expenses: {
     id: 'expenses',
     label: 'Expenses',
     path: '/expenses',
