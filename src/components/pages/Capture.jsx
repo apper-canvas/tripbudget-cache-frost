@@ -275,9 +275,8 @@ const Capture = () => {
             </div>
           )}
         </div>
-        
-        {/* Expense Form */}
-        <div className="space-y-4">
+{/* Expense Form */}
+        <div className="space-y-6">
           <h3 className="font-semibold text-surface-900">Expense Details</h3>
           
           {trips.length > 0 && (
@@ -299,14 +298,16 @@ const Capture = () => {
             </div>
           )}
           
-          <Input
-            label="Merchant Name"
-            value={expenseData.merchantName}
-            onChange={(e) => setExpenseData(prev => ({ ...prev, merchantName: e.target.value }))}
-            required
-          />
+          <div className="mb-6">
+            <Input
+              label="Merchant Name"
+              value={expenseData.merchantName}
+              onChange={(e) => setExpenseData(prev => ({ ...prev, merchantName: e.target.value }))}
+              required
+            />
+          </div>
           
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-6">
             <Input
               label="Amount"
               type="number"

@@ -51,17 +51,17 @@ const Input = ({
         
         {/* Floating Label */}
         {label && (
-          <motion.label
+<motion.label
             initial={false}
             animate={{
-              y: shouldFloat ? -32 : 0,
+              y: shouldFloat ? -40 : 0,
               scale: shouldFloat ? 0.85 : 1,
               color: error ? '#EF4444' : focused ? '#2563EB' : '#64748B'
             }}
             transition={{ duration: 0.2 }}
             className={`
-              absolute left-4 top-3 pointer-events-none origin-left
-              ${shouldFloat ? 'bg-white px-1' : ''}
+              absolute left-4 top-3 pointer-events-none origin-left z-10
+              ${shouldFloat ? 'bg-white px-2' : ''}
             `}
           >
             {label}
