@@ -4,7 +4,6 @@ import Capture from '@/components/pages/Capture'
 import Expenses from '@/components/pages/Expenses'
 import Reports from '@/components/pages/Reports'
 import EmailReceipts from '@/components/pages/EmailReceipts'
-
 export const routes = {
   dashboard: {
     id: 'dashboard',
@@ -19,6 +18,13 @@ trips: {
     path: '/trips',
     icon: 'MapPin',
     component: Trips
+  },
+  tripDetail: {
+    id: 'tripDetail',
+    label: 'Trip Detail',
+    path: '/trips/:id',
+    icon: 'MapPin',
+    component: Trips // Temporary fallback until TripDetail component is created
   },
   capture: {
     id: 'capture',
