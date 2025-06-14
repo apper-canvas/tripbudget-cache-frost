@@ -6,6 +6,7 @@ import ApperIcon from '@/components/ApperIcon'
 import Button from '@/components/atoms/Button'
 import Input from '@/components/atoms/Input'
 import Badge from '@/components/atoms/Badge'
+import Card from '@/components/atoms/Card'
 import ExpenseCard from '@/components/molecules/ExpenseCard'
 import SkeletonLoader from '@/components/molecules/SkeletonLoader'
 import EmptyState from '@/components/molecules/EmptyState'
@@ -23,7 +24,18 @@ const Expenses = () => {
   const [complianceFilter, setComplianceFilter] = useState('all')
   const [selectedExpenses, setSelectedExpenses] = useState([])
   const [showBulkActions, setShowBulkActions] = useState(false)
-  
+  const [showAddMenu, setShowAddMenu] = useState(false)
+  const [showManualForm, setShowManualForm] = useState(false)
+  const [formData, setFormData] = useState({
+    merchantName: '',
+    amount: '',
+    category: 'meals',
+    tripId: '',
+    date: new Date().toISOString().split('T')[0],
+    notes: ''
+  })
+  const [formErrors, setFormErrors] = useState({})
+  const [submitting, setSubmitting] = useState(false)
   useEffect(() => {
     loadExpensesData()
   }, [])
@@ -46,6 +58,63 @@ const Expenses = () => {
       toast.error('Failed to load expenses')
     } finally {
       setLoading(false)
+    }
+}
+  
+  const handleFormSubmit = async (e) => {
+    e.preventDefault()
+    
+    // Validate form
+    const errors = {}
+    if (!formData.merchantName.trim()) errors.merchantName = 'Merchant name is required'
+    if (!formData.amount || parseFloat(formData.amount) <= 0) errors.amount = 'Valid amount is required'
+    if (!formData.tripId) errors.tripId = 'Trip is required'
+    if (!formData.date) errors.date = 'Date is required'
+    
+    setFormErrors(errors)
+    if (Object.keys(errors).length > 0) return
+    
+    setSubmitting(true)
+    try {
+      const newExpense = {
+        merchantName: formData.merchantName.trim(),
+        amount: parseFloat(formData.amount),
+        currency: 'USD',
+        category: formData.category,
+        tripId: formData.tripId,
+        date: formData.date,
+        notes: formData.notes.trim(),
+        isCompliant: true, // Default to compliant for manual entries
+        receiptUrl: null // No receipt for manual entries
+      }
+      
+      const createdExpense = await expenseService.create(newExpense)
+      setExpenses(prev => [createdExpense, ...prev])
+      
+      // Reset form
+      setFormData({
+        merchantName: '',
+        amount: '',
+        category: 'meals',
+        tripId: '',
+        date: new Date().toISOString().split('T')[0],
+        notes: ''
+      })
+      setFormErrors({})
+      setShowManualForm(false)
+      
+      toast.success('Expense added successfully')
+    } catch (err) {
+      toast.error('Failed to add expense')
+    } finally {
+      setSubmitting(false)
+    }
+  }
+  
+  const handleFormChange = (field, value) => {
+    setFormData(prev => ({ ...prev, [field]: value }))
+    if (formErrors[field]) {
+      setFormErrors(prev => ({ ...prev, [field]: '' }))
     }
   }
   
@@ -167,17 +236,49 @@ return (
             {filteredExpenses.length} expense{filteredExpenses.length !== 1 ? 's' : ''} • Total: {formatCurrency(getTotalAmount())}
           </p>
         </div>
-        
-        <div className="flex items-center gap-3">
-          {/* Add Expense Button */}
-          <Button
-            variant="primary"
-            icon="Plus"
-            onClick={() => window.location.href = '/capture'}
-          >
-            Add Expense
-          </Button>
-          
+<div className="flex items-center gap-3">
+          {/* Add Expense Dropdown */}
+          <div className="relative">
+            <Button
+              variant="primary"
+              icon="Plus"
+              onClick={() => setShowAddMenu(!showAddMenu)}
+            >
+              Add Expense
+            </Button>
+            
+            {showAddMenu && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -10 }}
+                className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg border border-surface-200 z-10"
+              >
+                <div className="py-2">
+                  <button
+                    onClick={() => {
+                      window.location.href = '/capture'
+                      setShowAddMenu(false)
+                    }}
+                    className="w-full px-4 py-2 text-left text-sm text-surface-700 hover:bg-surface-50 flex items-center space-x-2"
+                  >
+                    <ApperIcon name="Camera" size={16} />
+                    <span>Capture Receipt</span>
+                  </button>
+                  <button
+                    onClick={() => {
+                      setShowManualForm(true)
+                      setShowAddMenu(false)
+                    }}
+                    className="w-full px-4 py-2 text-left text-sm text-surface-700 hover:bg-surface-50 flex items-center space-x-2"
+                  >
+                    <ApperIcon name="Edit" size={16} />
+                    <span>Manual Entry</span>
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </div>
           {/* Bulk Actions */}
           {showBulkActions && (
             <motion.div
@@ -325,7 +426,156 @@ return (
               </div>
             </motion.div>
           ))}
-        </div>
+</div>
+      )}
+      
+      {/* Manual Expense Form Modal */}
+      {showManualForm && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4"
+          onClick={() => setShowManualForm(false)}
+        >
+          <motion.div
+            initial={{ scale: 0.9, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            exit={{ scale: 0.9, opacity: 0 }}
+            onClick={(e) => e.stopPropagation()}
+            className="w-full max-w-md"
+          >
+            <Card className="max-h-[90vh] overflow-y-auto">
+              <form onSubmit={handleFormSubmit} className="space-y-4">
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-xl font-heading font-bold text-surface-900">
+                    Add Manual Expense
+                  </h2>
+                  <button
+                    type="button"
+                    onClick={() => setShowManualForm(false)}
+                    className="p-2 text-surface-400 hover:text-surface-600 rounded-lg hover:bg-surface-100"
+                  >
+                    <ApperIcon name="X" size={20} />
+                  </button>
+                </div>
+                
+                <div className="space-y-4">
+                  <div>
+                    <Input
+                      label="Merchant Name"
+                      placeholder="Enter merchant name"
+                      value={formData.merchantName}
+                      onChange={(e) => handleFormChange('merchantName', e.target.value)}
+                      error={formErrors.merchantName}
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <Input
+                      label="Amount"
+                      type="number"
+                      placeholder="0.00"
+                      value={formData.amount}
+                      onChange={(e) => handleFormChange('amount', e.target.value)}
+                      error={formErrors.amount}
+                      step="0.01"
+                      min="0"
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-surface-700 mb-2">
+                      Category
+                    </label>
+                    <select
+                      value={formData.category}
+                      onChange={(e) => handleFormChange('category', e.target.value)}
+                      className="w-full px-4 py-3 border-2 border-surface-300 rounded-lg focus:border-primary focus:outline-none bg-white"
+                      required
+                    >
+                      <option value="meals">Meals</option>
+                      <option value="transportation">Transportation</option>
+                      <option value="lodging">Lodging</option>
+                      <option value="conference">Conference</option>
+                      <option value="supplies">Supplies</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-surface-700 mb-2">
+                      Trip
+                    </label>
+                    <select
+                      value={formData.tripId}
+                      onChange={(e) => handleFormChange('tripId', e.target.value)}
+                      className={`w-full px-4 py-3 border-2 rounded-lg focus:border-primary focus:outline-none bg-white ${
+                        formErrors.tripId ? 'border-error' : 'border-surface-300'
+                      }`}
+                      required
+                    >
+                      <option value="">Select a trip</option>
+                      {trips.map(trip => (
+                        <option key={trip.id} value={trip.id}>
+                          {trip.name}
+                        </option>
+                      ))}
+                    </select>
+                    {formErrors.tripId && (
+                      <p className="mt-1 text-sm text-error">{formErrors.tripId}</p>
+                    )}
+                  </div>
+                  
+                  <div>
+                    <Input
+                      label="Date"
+                      type="date"
+                      value={formData.date}
+                      onChange={(e) => handleFormChange('date', e.target.value)}
+                      error={formErrors.date}
+                      required
+                    />
+                  </div>
+                  
+                  <div>
+                    <label className="block text-sm font-medium text-surface-700 mb-2">
+                      Notes (Optional)
+                    </label>
+                    <textarea
+                      value={formData.notes}
+                      onChange={(e) => handleFormChange('notes', e.target.value)}
+                      placeholder="Add any additional notes..."
+                      rows={3}
+                      className="w-full px-4 py-3 border-2 border-surface-300 rounded-lg focus:border-primary focus:outline-none bg-white resize-none"
+                    />
+                  </div>
+                </div>
+                
+                <div className="flex items-center justify-end space-x-3 pt-4 border-t border-surface-200">
+                  <Button
+                    type="button"
+                    variant="ghost"
+                    onClick={() => setShowManualForm(false)}
+                    disabled={submitting}
+                  >
+                    Cancel
+                  </Button>
+                  <Button
+                    type="submit"
+                    variant="primary"
+                    disabled={submitting}
+                    icon={submitting ? undefined : "Plus"}
+                  >
+                    {submitting ? 'Adding...' : 'Add Expense'}
+                  </Button>
+                </div>
+              </form>
+            </Card>
+          </motion.div>
+        </motion.div>
       )}
     </div>
   )
