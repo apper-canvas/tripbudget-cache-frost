@@ -410,8 +410,9 @@ const TripDetails = () => {
                 </div>
                 
                 <div className="space-y-4">
-                  <Input
+<Input
                     label="Trip Name"
+                    labelPosition="above"
                     value={editTrip.name}
                     onChange={(e) => setEditTrip(prev => ({ ...prev, name: e.target.value }))}
                     placeholder="e.g., Q1 Sales Conference"
@@ -419,8 +420,9 @@ const TripDetails = () => {
                   />
                   
                   <div className="grid grid-cols-2 gap-4">
-                    <Input
+<Input
                       label="Start Date"
+                      labelPosition="above"
                       type="date"
                       value={editTrip.startDate}
                       onChange={(e) => setEditTrip(prev => ({ ...prev, startDate: e.target.value }))}
@@ -428,6 +430,7 @@ const TripDetails = () => {
                     />
                     <Input
                       label="End Date"
+                      labelPosition="above"
                       type="date"
                       value={editTrip.endDate}
                       onChange={(e) => setEditTrip(prev => ({ ...prev, endDate: e.target.value }))}
@@ -436,8 +439,9 @@ const TripDetails = () => {
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
-                    <Input
+<Input
                       label="Budget"
+                      labelPosition="above"
                       type="number"
                       value={editTrip.budget}
                       onChange={(e) => setEditTrip(prev => ({ ...prev, budget: e.target.value }))}

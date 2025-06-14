@@ -247,8 +247,9 @@ const Trips = () => {
                 </div>
                 
                 <div className="space-y-4">
-                  <Input
+<Input
                     label="Trip Name"
+                    labelPosition="above"
                     value={newTrip.name}
                     onChange={(e) => setNewTrip(prev => ({ ...prev, name: e.target.value }))}
                     placeholder="e.g., Q1 Sales Conference"
@@ -256,8 +257,9 @@ const Trips = () => {
                   />
                   
                   <div className="grid grid-cols-2 gap-4">
-                    <Input
+<Input
                       label="Start Date"
+                      labelPosition="above"
                       type="date"
                       value={newTrip.startDate}
                       onChange={(e) => setNewTrip(prev => ({ ...prev, startDate: e.target.value }))}
@@ -265,6 +267,7 @@ const Trips = () => {
                     />
                     <Input
                       label="End Date"
+                      labelPosition="above"
                       type="date"
                       value={newTrip.endDate}
                       onChange={(e) => setNewTrip(prev => ({ ...prev, endDate: e.target.value }))}
@@ -273,8 +276,9 @@ const Trips = () => {
                   </div>
                   
                   <div className="grid grid-cols-2 gap-4">
-                    <Input
+<Input
                       label="Budget"
+                      labelPosition="above"
                       type="number"
                       value={newTrip.budget}
                       onChange={(e) => setNewTrip(prev => ({ ...prev, budget: e.target.value }))}

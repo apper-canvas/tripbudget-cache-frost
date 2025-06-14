@@ -297,6 +297,7 @@ const Capture = () => {
           <div className="mb-6">
             <Input
               label="Merchant Name"
+              labelPosition="above"
               value={expenseData.merchantName}
               onChange={(e) => setExpenseData(prev => ({ ...prev, merchantName: e.target.value }))}
               required

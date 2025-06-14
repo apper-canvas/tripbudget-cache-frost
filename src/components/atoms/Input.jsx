@@ -93,14 +93,14 @@ const [focused, setFocused] = useState(false)
           <motion.label
             initial={false}
             animate={{
-              y: shouldFloat ? -40 : 0,
-              scale: shouldFloat ? 0.85 : 1,
+              y: shouldFloat ? -45 : 0,
+              scale: shouldFloat ? 0.8 : 1,
               color: error ? '#EF4444' : focused ? '#2563EB' : '#64748B'
             }}
             transition={{ duration: 0.2 }}
             className={`
-              absolute left-4 top-3 pointer-events-none origin-left z-10
-              ${shouldFloat ? 'bg-white px-2' : ''}
+              absolute left-4 top-3 pointer-events-none origin-left z-20
+              ${shouldFloat ? 'bg-white px-2 rounded' : ''}
             `}
           >
             {label}
