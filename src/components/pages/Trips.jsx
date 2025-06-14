@@ -289,7 +289,7 @@ const Trips = () => {
                       <label className="block text-sm font-medium text-surface-700 mb-2">
                         Currency
                       </label>
-                      <select
+<select
                         value={newTrip.currency}
                         onChange={(e) => setNewTrip(prev => ({ ...prev, currency: e.target.value }))}
                         className="w-full px-4 py-3 border-2 border-surface-300 rounded-lg focus:border-primary focus:outline-none bg-white"
@@ -297,6 +297,7 @@ const Trips = () => {
                         <option value="USD">USD</option>
                         <option value="EUR">EUR</option>
                         <option value="GBP">GBP</option>
+                        <option value="INR">INR</option>
                         <option value="CAD">CAD</option>
                       </select>
                     </div>
