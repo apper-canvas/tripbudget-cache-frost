@@ -304,11 +304,12 @@ const Capture = () => {
             />
           </div>
           
-          <div className="grid grid-cols-2 gap-6">
+<div className="grid grid-cols-2 gap-6">
             <Input
               label="Amount"
               type="number"
               step="0.01"
+              labelPosition="above"
               value={expenseData.amount}
               onChange={(e) => setExpenseData(prev => ({ ...prev, amount: e.target.value }))}
               required
@@ -316,6 +317,7 @@ const Capture = () => {
             <Input
               label="Date"
               type="date"
+              labelPosition="above"
               value={expenseData.date}
               onChange={(e) => setExpenseData(prev => ({ ...prev, date: e.target.value }))}
               required
