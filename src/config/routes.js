@@ -13,14 +13,14 @@ export const routes = {
     icon: 'LayoutDashboard',
     component: Dashboard
   },
-  trips: {
+trips: {
     id: 'trips',
     label: 'Trips',
     path: '/trips',
     icon: 'MapPin',
     component: Trips
   },
-capture: {
+  capture: {
     id: 'capture',
     label: 'Capture',
     path: '/capture',
@@ -45,9 +45,10 @@ capture: {
     id: 'emailReceipts',
     label: 'Email Receipts',
     path: '/email-receipts',
-    icon: 'Mail',
+icon: 'Mail',
     component: EmailReceipts
   }
+}
 
 export const routeArray = Object.values(routes)
 export default routes
