@@ -77,7 +77,7 @@ useEffect(() => {
     }
   }
   
-  const getSpendingTrendsOptions = () => ({
+const getSpendingTrendsOptions = () => ({
     chart: {
       type: 'line',
       height: 300,
@@ -93,11 +93,21 @@ useEffect(() => {
       categories: chartData.spendingTrends.map(item => {
         const [year, month] = item.month.split('-')
         return new Date(year, month - 1).toLocaleDateString('en-US', { month: 'short', year: 'numeric' })
-      })
+      }),
+      labels: {
+        style: {
+          fontSize: '12px',
+          fontFamily: 'Inter, sans-serif'
+        }
+      }
     },
     yaxis: {
       labels: {
-        formatter: (value) => `$${value.toFixed(0)}`
+        formatter: (value) => `$${value.toFixed(0)}`,
+        style: {
+          fontSize: '12px',
+          fontFamily: 'Inter, sans-serif'
+        }
       }
     },
     grid: {
@@ -119,7 +129,9 @@ useEffect(() => {
     colors: ['#8B5CF6', '#06B6D4', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6'],
     labels: chartData.vendorBreakdown.slice(0, 6).map(item => item.vendor),
     legend: {
-      position: 'bottom'
+      position: 'bottom',
+      fontSize: '12px',
+      fontFamily: 'Inter, sans-serif'
     },
     tooltip: {
       y: {
@@ -139,11 +151,21 @@ useEffect(() => {
     xaxis: {
       categories: chartData.categoryBreakdown.map(item => 
         item.category.charAt(0).toUpperCase() + item.category.slice(1)
-      )
+      ),
+      labels: {
+        style: {
+          fontSize: '12px',
+          fontFamily: 'Inter, sans-serif'
+        }
+      }
     },
     yaxis: {
       labels: {
-        formatter: (value) => `$${value.toFixed(0)}`
+        formatter: (value) => `$${value.toFixed(0)}`,
+        style: {
+          fontSize: '12px',
+          fontFamily: 'Inter, sans-serif'
+        }
       }
     },
     grid: {
@@ -202,12 +224,12 @@ useEffect(() => {
       <motion.div
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
-        className="text-center md:text-left"
+className="text-center md:text-left"
       >
-        <h1 className="text-3xl font-heading font-bold text-surface-900 mb-2">
+        <h1 className="text-2xl md:text-3xl font-heading font-bold text-surface-900 mb-2">
           Welcome back!
         </h1>
-        <p className="text-surface-600">
+        <p className="text-sm md:text-base text-surface-600">
           Here's what's happening with your travel expenses
         </p>
       </motion.div>
@@ -227,12 +249,11 @@ useEffect(() => {
                 <ApperIcon name={stat.icon} size={20} className={stat.color} />
               </div>
             </div>
-            
-            <div>
-              <p className="text-2xl md:text-3xl font-bold text-surface-900 mb-1">
+<div>
+              <p className="text-xl md:text-2xl lg:text-3xl font-bold text-surface-900 mb-1">
                 {loading ? '...' : stat.value}
               </p>
-              <p className="text-sm text-surface-500 break-words">
+              <p className="text-xs md:text-sm text-surface-500 break-words">
                 {stat.label}
               </p>
             </div>
@@ -264,10 +285,10 @@ useEffect(() => {
           transition={{ delay: 0.4 }}
           className="bg-white rounded-xl p-6 border border-surface-200"
         >
-          <div className="flex items-center justify-between mb-6">
+<div className="flex items-center justify-between mb-6">
             <div>
-              <h3 className="text-xl font-semibold text-surface-900">Spending Trends</h3>
-              <p className="text-surface-600">Monthly expense progression</p>
+              <h3 className="text-lg md:text-xl font-semibold text-surface-900">Spending Trends</h3>
+              <p className="text-sm md:text-base text-surface-600">Monthly expense progression</p>
             </div>
             <div className="p-3 bg-primary/10 rounded-lg">
               <ApperIcon name="TrendingUp" size={24} className="text-primary" />
@@ -300,10 +321,10 @@ useEffect(() => {
             transition={{ delay: 0.5 }}
             className="bg-white rounded-xl p-6 border border-surface-200"
           >
-            <div className="flex items-center justify-between mb-6">
+<div className="flex items-center justify-between mb-6">
               <div>
-                <h3 className="text-xl font-semibold text-surface-900">Top Vendors</h3>
-                <p className="text-surface-600">Expense distribution by merchant</p>
+                <h3 className="text-lg md:text-xl font-semibold text-surface-900">Top Vendors</h3>
+                <p className="text-sm md:text-base text-surface-600">Expense distribution by merchant</p>
               </div>
               <div className="p-3 bg-accent/10 rounded-lg">
                 <ApperIcon name="PieChart" size={24} className="text-accent" />
@@ -331,10 +352,10 @@ useEffect(() => {
             transition={{ delay: 0.6 }}
             className="bg-white rounded-xl p-6 border border-surface-200"
           >
-            <div className="flex items-center justify-between mb-6">
+<div className="flex items-center justify-between mb-6">
               <div>
-                <h3 className="text-xl font-semibold text-surface-900">Expense Categories</h3>
-                <p className="text-surface-600">Spending breakdown by category</p>
+                <h3 className="text-lg md:text-xl font-semibold text-surface-900">Expense Categories</h3>
+                <p className="text-sm md:text-base text-surface-600">Spending breakdown by category</p>
               </div>
               <div className="p-3 bg-secondary/10 rounded-lg">
                 <ApperIcon name="BarChart3" size={24} className="text-secondary" />
