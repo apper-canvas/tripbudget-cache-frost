@@ -1,11 +1,9 @@
-import { motion } from "framer-motion";
-import { differenceInDays, format, isAfter, isBefore } from "date-fns";
-import { useNavigate } from "react-router-dom";
-import { toast } from "react-toastify";
-import ApperIcon from "@/components/ApperIcon";
-import Badge from "@/components/atoms/Badge";
-import BudgetProgress from "./BudgetProgress";
-import React from "react";
+import { motion } from 'framer-motion'
+import { format, differenceInDays, isAfter, isBefore } from 'date-fns'
+import ApperIcon from '@/components/ApperIcon'
+import Badge from '@/components/atoms/Badge'
+import BudgetProgress from './BudgetProgress'
+
 const TripCard = ({ 
   trip, 
   expenses = [],
@@ -13,7 +11,6 @@ const TripCard = ({
   onClick,
   className = ''
 }) => {
-  const navigate = useNavigate()
   const totalSpent = expenses.reduce((sum, expense) => sum + expense.amount, 0)
   const budgetAmount = budget?.totalAmount || trip.budget || 0
   
@@ -55,17 +52,8 @@ const TripCard = ({
       maximumFractionDigits: 0
     }).format(amount)
   }
-const statusBadge = getStatusBadge()
   
-  const handleClick = () => {
-    if (onClick) {
-      onClick()
-    } else {
-      // Navigate to trip detail page
-      navigate(`/trips/${trip.id}`)
-      toast.info('Trip detail page is being prepared...')
-    }
-  }
+  const statusBadge = getStatusBadge()
   
   return (
     <motion.div
@@ -73,13 +61,13 @@ const statusBadge = getStatusBadge()
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ y: -4, boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.1)' }}
       whileTap={{ scale: 0.98 }}
-      onClick={handleClick}
+      onClick={onClick}
       className={`
         bg-white rounded-xl p-6 border border-surface-200 cursor-pointer
         transition-all duration-200 hover:border-primary/20 ${className}
       `}
     >
-<div className="flex items-start justify-between mb-4">
+      <div className="flex items-start justify-between mb-4">
         <div className="flex-1 min-w-0">
           <div className="flex items-center space-x-2 mb-2">
             <h3 className="font-heading font-semibold text-surface-900 truncate">

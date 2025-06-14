@@ -50,8 +50,8 @@ const TripOverview = ({ className = '' }) => {
     return budgets.find(budget => budget.tripId === tripId)
   }
   
-const handleTripClick = () => {
-    navigate('/trips')
+  const handleTripClick = (trip) => {
+    navigate('/trips', { state: { selectedTrip: trip } })
   }
   
   if (loading) {
@@ -122,11 +122,11 @@ const handleTripClick = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: index * 0.1 }}
           >
-<TripCard
+            <TripCard
               trip={trip}
               expenses={getExpensesForTrip(trip.id)}
               budget={getBudgetForTrip(trip.id)}
-              onClick={handleTripClick}
+              onClick={() => handleTripClick(trip)}
             />
           </motion.div>
         ))}

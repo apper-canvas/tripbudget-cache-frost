@@ -4,7 +4,8 @@ import Capture from '@/components/pages/Capture'
 import Expenses from '@/components/pages/Expenses'
 import Reports from '@/components/pages/Reports'
 import EmailReceipts from '@/components/pages/EmailReceipts'
-const routes = {
+
+export const routes = {
   dashboard: {
     id: 'dashboard',
     label: 'Dashboard',
@@ -12,12 +13,12 @@ const routes = {
     icon: 'LayoutDashboard',
     component: Dashboard
   },
-  trips: {
+trips: {
     id: 'trips',
     label: 'Trips',
     path: '/trips',
     icon: 'MapPin',
-component: Trips
+    component: Trips
   },
   capture: {
     id: 'capture',
@@ -44,15 +45,10 @@ component: Trips
     id: 'emailReceipts',
     label: 'Email Receipts',
     path: '/email-receipts',
-    icon: 'Mail',
+icon: 'Mail',
     component: EmailReceipts
+  }
 }
-}
-// Convert routes object to array for routing
-const routeArray = Object.values(routes)
 
-// Navigation array is same as route array since no detail pages
-const navigationArray = routeArray
-
-export { routes, routeArray, navigationArray }
+export const routeArray = Object.values(routes)
 export default routes
