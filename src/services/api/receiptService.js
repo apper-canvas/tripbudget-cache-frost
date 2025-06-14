@@ -55,9 +55,9 @@ class ReceiptService {
       merchantName: "Sample Restaurant",
       amount: Math.floor(Math.random() * 10000) / 100,
       date: new Date().toISOString().split('T')[0],
-      category: "meals",
+category: "meals",
       confidence: 0.85 + Math.random() * 0.15
-}
+    }
     
     return mockOCRResult
   }
@@ -122,6 +122,8 @@ class ReceiptService {
   async markAsProcessed(emailId) {
     await delay(200)
     return true
+return true
   }
+}
 
 export default new ReceiptService()
