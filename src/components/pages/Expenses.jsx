@@ -155,7 +155,7 @@ const Expenses = () => {
     )
   }
   
-  return (
+return (
     <div className="p-6 space-y-6 max-w-full overflow-hidden">
       {/* Header */}
       <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4">
@@ -168,26 +168,37 @@ const Expenses = () => {
           </p>
         </div>
         
-        {/* Bulk Actions */}
-        {showBulkActions && (
-          <motion.div
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            className="flex items-center gap-2"
+        <div className="flex items-center gap-3">
+          {/* Add Expense Button */}
+          <Button
+            variant="primary"
+            icon="Plus"
+            onClick={() => window.location.href = '/capture'}
           >
-            <span className="text-sm text-surface-600">
-              {selectedExpenses.length} selected
-            </span>
-            <Button
-              variant="danger"
-              size="sm"
-              icon="Trash2"
-              onClick={handleBulkDelete}
+            Add Expense
+          </Button>
+          
+          {/* Bulk Actions */}
+          {showBulkActions && (
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="flex items-center gap-2"
             >
-              Delete
-            </Button>
-          </motion.div>
-        )}
+              <span className="text-sm text-surface-600">
+                {selectedExpenses.length} selected
+              </span>
+              <Button
+                variant="danger"
+                size="sm"
+                icon="Trash2"
+                onClick={handleBulkDelete}
+              >
+                Delete
+              </Button>
+            </motion.div>
+          )}
+        </div>
       </div>
       
       {/* Filters */}
