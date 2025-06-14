@@ -57,9 +57,11 @@ const routes = {
     component: EmailReceipts
 }
 }
-
-// Convert routes object to array for navigation components
+// Convert routes object to array for routing
 const routeArray = Object.values(routes)
 
-export { routes, routeArray }
+// Filter routes for navigation (exclude tripDetail from nav bar)
+const navigationArray = routeArray.filter(route => route.id !== 'tripDetail')
+
+export { routes, routeArray, navigationArray }
 export default routes
