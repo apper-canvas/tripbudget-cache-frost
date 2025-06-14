@@ -1,5 +1,6 @@
 import Dashboard from '@/components/pages/Dashboard'
 import Trips from '@/components/pages/Trips'
+import TripDetail from '@/components/pages/TripDetail'
 import Capture from '@/components/pages/Capture'
 import Expenses from '@/components/pages/Expenses'
 import Reports from '@/components/pages/Reports'
@@ -19,6 +20,13 @@ const routes = {
     path: '/trips',
     icon: 'MapPin',
     component: Trips
+  },
+  tripDetail: {
+    id: 'tripDetail',
+    label: 'Trip Detail',
+    path: '/trips/:id',
+    icon: 'MapPin',
+    component: TripDetail
   },
   capture: {
     id: 'capture',
