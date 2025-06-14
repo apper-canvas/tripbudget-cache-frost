@@ -57,6 +57,5 @@ const routes = {
     component: EmailReceipts
   }
 }
-
-export const routeArray = Object.values(routes)
+export { routes }
 export default routes
