@@ -27,14 +27,14 @@ export const routes = {
     icon: 'Camera',
     component: Capture
   },
-  expenses: {
+expenses: {
     id: 'expenses',
     label: 'Expenses',
     path: '/expenses',
     icon: 'Receipt',
     component: Expenses
   },
-reports: {
+  reports: {
     id: 'reports',
     label: 'Reports', 
     path: '/reports',
