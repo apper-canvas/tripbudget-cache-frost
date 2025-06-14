@@ -279,23 +279,19 @@ const Capture = () => {
         <div className="space-y-6">
           <h3 className="font-semibold text-surface-900">Expense Details</h3>
           
-          {trips.length > 0 && (
-            <div>
-              <label className="block text-sm font-medium text-surface-700 mb-2">
-                Trip <span className="text-error">*</span>
-              </label>
-              <select
-                value={selectedTrip}
-                onChange={(e) => setSelectedTrip(e.target.value)}
-                className="w-full px-4 py-3 border-2 border-surface-300 rounded-lg focus:border-primary focus:outline-none bg-white"
-              >
-                {trips.map(trip => (
-                  <option key={trip.id} value={trip.id}>
-                    {trip.name}
-                  </option>
-                ))}
-              </select>
-            </div>
+{trips.length > 0 && (
+            <Input
+              label="Trip"
+              type="select"
+              labelPosition="above"
+              value={selectedTrip}
+              onChange={(e) => setSelectedTrip(e.target.value)}
+              options={trips.map(trip => ({
+                value: trip.id,
+                label: trip.name
+              }))}
+              required
+            />
           )}
           
           <div className="mb-6">
@@ -325,7 +321,7 @@ const Capture = () => {
             />
           </div>
           
-          <div>
+<div>
             <label className="block text-sm font-medium text-surface-700 mb-2">
               Category
             </label>
